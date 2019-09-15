@@ -1,9 +1,8 @@
 package com.laptop.bag.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
@@ -16,10 +15,6 @@ public class TestFeatures {
 	@Before
 	public void setUp() throws Exception {
 		feature = new Features();
-	}
-
-	@After
-	public void tearDown() throws Exception {
 	}
 
 	@Test

@@ -6,14 +6,21 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+
 @Provider
 public class GenericExceptionMapper implements ExceptionMapper<Exception>  {
 
 	private static final String HTTP_NOT_FOUND = "HTTP 404 Not Found";
 	private static final String HTTP_BAD_REQUEST = "HTTP 400 Bad Request";
+	private static final Logger oLog = LoggerFactory.getLogger(GenericExceptionMapper.class);
 	@Override
 	public Response toResponse(Exception exp) {
 		ErrorMessage message = null;
+		oLog.error(exp.getMessage(), exp);
 		
 		switch (exp.getMessage()) {
 		case HTTP_NOT_FOUND:

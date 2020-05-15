@@ -4,17 +4,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.laptop.bag.exception.GenericExceptionMapper;
 import com.laptop.bag.model.Features;
 import com.laptop.bag.model.LaptopDetails;
 
 public class LaptopOperation implements Ioperation {
 	
 	private static List<LaptopDetails> details = new ArrayList<LaptopDetails>();
+	private static final Logger oLog = LoggerFactory.getLogger(GenericExceptionMapper.class);
 	
 	@Override
 	public List<LaptopDetails> getAllLaptops() {
 		if(details.isEmpty())
 			details.add(getDefaultData());
+		oLog.info(details.toString());
 		return details;
 	}
 

@@ -17,18 +17,18 @@
 		<servlet-name>Jersey Web Application</servlet-name>
 		<url-pattern>/webapi/*</url-pattern>
 	</servlet-mapping>
-	<!-- <security-constraint>
+	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name></web-resource-name>
-			<url-pattern>/webapi/prompt/*</url-pattern>
+			<url-pattern>/webapi/secure/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>manager-gui</role-name>
 		</auth-constraint>
-	</security-constraint> -->
-	<!-- <login-config>
+	</security-constraint>
+	<login-config>
 		<auth-method>BASIC</auth-method>
-	</login-config> -->
+	</login-config>
 	<!-- <security-constraint>
 		<web-resource-collection>
 		<web-resource-name>Secure URLs</web-resource-name>

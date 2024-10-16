@@ -1,18 +1,18 @@
 package com.laptop.bag.filters;
 
 import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
-import javax.ws.rs.container.ContainerRequestContext;
-import javax.ws.rs.container.ContainerRequestFilter;
-import javax.ws.rs.container.ContainerResponseContext;
-import javax.ws.rs.container.ContainerResponseFilter;
-import javax.ws.rs.core.GenericEntity;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-import javax.ws.rs.ext.Provider;
+import jakarta.ws.rs.container.ContainerRequestContext;
+import jakarta.ws.rs.container.ContainerRequestFilter;
+import jakarta.ws.rs.container.ContainerResponseContext;
+import jakarta.ws.rs.container.ContainerResponseFilter;
+import jakarta.ws.rs.core.GenericEntity;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
+import jakarta.ws.rs.ext.Provider;
 
-import org.glassfish.jersey.internal.util.Base64;
 
 import com.laptop.bag.exception.ErrorMessage;
 
@@ -27,7 +27,8 @@ public class SecurityFilter implements ContainerRequestFilter,ContainerResponseF
 		boolean flag = false;
 		if(requestContext.getUriInfo().getPath().contains("secure")){
 			List<String> headers = requestContext.getHeaders().get(AUTHORIZATION_KEY);
-			if(null == headers || !isAuthorize(Base64.decodeAsString(headers.get(0).replace(BASIC_AUTH, "")))){
+			String authValue = new String(Base64.getDecoder().decode(headers.get(0).replace(BASIC_AUTH, "")));
+			if(null == headers || !isAuthorize(authValue)){
 				flag = true;
 			}
 			if(flag){
